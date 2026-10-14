@@ -1,0 +1,7 @@
+PS5 Trophy Unlocker component
+============================
+
+This package embeds the PS5 r10 stable trophy payload supplied by the user.
+The supplied source archive and GPLv3 license are included beside this notice.
+
+The FPKG Builder UI does not require a separate trophy_unlocker.elf file.

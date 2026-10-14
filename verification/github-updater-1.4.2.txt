@@ -1,0 +1,14 @@
+PS5 FPKG Builder 1.4.2 - GitHub updater integration
+Repository: zerodaysofficial/ps5-exfat-pkg-builder-v1
+API: /releases/latest
+Expected release asset: PS5-FPKG-Builder.zip
+Behavior:
+- check starts after the main form is shown
+- no startup blocking on network failures
+- semantic version comparison (v-prefix accepted)
+- modern update popup with release notes
+- UPDATE NOW downloads the fixed GitHub release asset
+- downloaded asset must be a non-empty ZIP (PK signature)
+- updater waits for the current process, replaces app files, and restarts START.cmd
+- VIEW RELEASE opens the official GitHub release page
+- local app version is read from VERSION.txt

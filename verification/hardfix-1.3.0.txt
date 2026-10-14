@@ -1,0 +1,15 @@
+PS5 FPKG Builder 1.3.0 - hard-fix verification notes
+
+Source/package checks performed in the build workspace:
+- all source/*.cs files passed a lexical delimiter-balance scan;
+- all source/*.cs files passed a scan for invalid ordinary C# escape sequences;
+- START.cmd now compiles only when FpkgExfat.dll/.build-version do not match 1.3.0;
+- AVVIA.cmd delegates to START.cmd;
+- no prebuilt FpkgExfat.dll or .build-version is shipped, so the first Windows launch builds the exact bundled source;
+- Reader passcode TextBox uses UseSystemPasswordChar=true;
+- original passcode/password TextBoxes are masked at runtime by the integration layer;
+- Reader artwork extraction looks for icon0/pic0/pic1/pic2 PNG/DDS entries and uses bundled Magick.NET for DDS preview conversion;
+- first-tab workspace is attached before the main form is shown and reattached/invalidate/layout is forced on Form.Shown.
+
+Environment limitation:
+A Windows/.NET compiler is not available in the packaging container, so the final C# compilation must run on Windows via START.cmd. If it fails, build.log contains the exact compiler output.

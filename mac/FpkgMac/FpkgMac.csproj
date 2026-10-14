@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>FpkgMac</AssemblyName>
+    <RootNamespace>FpkgExfat</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.4.5</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="MacBridge.cs" />
+    <Compile Include="MacBuild.cs" />
+    <Compile Include="WinFormsShim.cs" />
+    <Compile Include="MacProgram.cs" />
+    <Compile Include="..\..\source\AppVersion.cs" Link="src\AppVersion.cs" />
+    <Compile Include="..\..\source\BackportUpdate.cs" Link="src\BackportUpdate.cs" />
+    <Compile Include="..\..\source\CntMetadata.cs" Link="src\CntMetadata.cs" />
+    <Compile Include="..\..\source\FileWorkspace.cs" Link="src\FileWorkspace.cs" />
+    <Compile Include="..\..\source\ImageFormat.cs" Link="src\ImageFormat.cs" />
+    <Compile Include="..\..\source\MetadataTransaction.cs" Link="src\MetadataTransaction.cs" />
+    <Compile Include="..\..\source\PackageSdk.cs" Link="src\PackageSdk.cs" />
+    <Compile Include="..\..\source\PkgExtractionJob.cs" Link="src\PkgExtractionJob.cs" />
+    <Compile Include="..\..\source\PkgFileIo.cs" Link="src\PkgFileIo.cs" />
+    <Compile Include="..\..\source\PkgFileSaveJob.cs" Link="src\PkgFileSaveJob.cs" />
+    <Compile Include="..\..\source\PkgFileSession.cs" Link="src\PkgFileSession.cs" />
+    <Compile Include="..\..\source\PkgRebuildJob.cs" Link="src\PkgRebuildJob.cs" />
+    <Compile Include="..\..\source\ProcessRunner.cs" Link="src\ProcessRunner.cs" />
+    <Compile Include="..\..\source\SdkVersion.cs" Link="src\SdkVersion.cs" />
+    <Compile Include="..\..\source\SourceInspector.cs" Link="src\SourceInspector.cs" />
+    <Compile Include="..\..\source\StoredSi.cs" Link="src\StoredSi.cs" />
+    <Compile Include="..\..\source\TrophyCatalogReader.cs" Link="src\TrophyCatalogReader.cs" />
+    <Compile Include="..\..\source\TrophyFtp.cs" Link="src\TrophyFtp.cs" />
+    <Compile Include="..\..\source\TrophyModels.cs" Link="src\TrophyModels.cs" />
+    <Compile Include="..\..\source\TrophyUnlockerEngine.cs" Link="src\TrophyUnlockerEngine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\assets\trophy-unlocker-ps5-r10-stable.elf" LogicalName="FpkgExfat.TrophyUnlocker.Ps5R10" />
+    <EmbeddedResource Include="..\..\assets\trophy-unlocker-ps5-uds-initializer-v12.elf" LogicalName="FpkgExfat.TrophyUnlocker.Ps5UdsV12" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+PS5 FPKG Builder 1.4.5 - UI / Updater r26 verification
+
+PASS: Folder/exFAT imports are source-only and require explicit Build PKG click.
+PASS: Output Folder and Temporary Folder are not auto-populated.
+PASS: Direct Folder/exFAT build remains copy-free.
+PASS: Build Settings area expanded to expose Target Firmware / SDK controls and the row below it.
+PASS: Updater resolves a real ZIP browser_download_url from GitHub Release JSON instead of a fixed asset URL.
+PASS: Trophy r22 contract retained.
+
+Environment note: Windows C# compiler / .NET SDK is not installed in this Linux verification container, so the final WinForms binary must compile on Windows through START.cmd / BUILD.cmd.

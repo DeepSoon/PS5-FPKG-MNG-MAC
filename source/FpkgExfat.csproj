@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <UseAppHost>false</UseAppHost>
+    <AssemblyName>FpkgExfat</AssemblyName>
+    <LangVersion>5</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\assets\trophy-unlocker-ps5-r10-stable.elf" Link="TrophyUnlockerPayload.elf" LogicalName="FpkgExfat.TrophyUnlocker.Ps5R10" />
+    <EmbeddedResource Include="..\assets\trophy-unlocker-ps5-uds-initializer-v12.elf" Link="TrophyUnlockerUdsPayload.elf" LogicalName="FpkgExfat.TrophyUnlocker.Ps5UdsV12" />
+  </ItemGroup>
+</Project>

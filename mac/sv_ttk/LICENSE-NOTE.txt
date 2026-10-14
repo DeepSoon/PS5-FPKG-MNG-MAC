@@ -1,0 +1,5 @@
+MIT License — Sun Valley ttk theme
+Copyright (c) rdbende (https://github.com/rdbende/Sun-Valley-ttk-theme)
+
+Vendored here (sv.tcl + theme/) to style this app's Tkinter interface.
+The full license text ships upstream under the name MIT License.

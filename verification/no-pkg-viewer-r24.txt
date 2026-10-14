@@ -1,0 +1,12 @@
+PS5 FPKG Builder 1.4.3 - No PKG Viewer r24
+
+Changes:
+- Removed the dedicated PKG Viewer section introduced in r23.
+- Restored the r22 UI/navigation baseline.
+- Trophy Unlocker r22 behavior retained.
+- Direct folder auto-build retained.
+- Direct exFAT mount/build retained.
+
+Verification:
+- No PkgViewerReader.cs source file.
+- No PKG Viewer navigation/UI references.

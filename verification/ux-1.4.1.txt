@@ -1,0 +1,11 @@
+PS5 FPKG Builder 1.4.1 - UX 2.0 verification notes
+
+- Custom sidebar navigation replaces the classic tab strip.
+- Shared build workspace attaches before first paint.
+- Build dashboard is split into source/preview and settings/activity columns.
+- Drag-and-drop import is enabled.
+- Reader passcode remains masked and memory-only.
+- Source folders and image formats remain separated by navigation section.
+- START.cmd compiles only when the 1.4.1 DLL is missing or out of date.
+
+Hardfix: custom sidebar pages are ordinary Panels, never TabPage objects. This prevents WinForms from throwing when pages are hosted in the custom pageHost panel.

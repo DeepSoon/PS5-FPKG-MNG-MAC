@@ -1,0 +1,11 @@
+PS5 FPKG Builder 1.4.3 - direct-source r16
+
+Design decision
+- Prepared folder sources are already direct-to-builder.
+- exFAT images are mounted read-only and the mounted game root is now direct-to-builder.
+- No full dump scan/copy is performed for exFAT.
+- The mount stays live through build and verification.
+- SdkVersionOverride is used for the generated package/executable SDK metadata, avoiding source mutation.
+- PFS/UFS2 extraction behavior is intentionally unchanged.
+
+Regression test: tests/exfat_direct_build_contract.py

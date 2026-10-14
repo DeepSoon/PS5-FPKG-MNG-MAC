@@ -1,0 +1,17 @@
+# Regenerable Mac build outputs (rebuild with mac/build-mac-app.sh)
+mac/publish-arm64/
+mac/FpkgMac/bin/
+mac/FpkgMac/obj/
+mac/FpkgMacUI
+mac/*.app
+# Python caches
+**/__pycache__/
+*.pyc
+*.pyo
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+# Logs and temp
+build.log
+*.tmp
