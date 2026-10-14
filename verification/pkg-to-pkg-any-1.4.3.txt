@@ -1,1 +1,0 @@
-PKG -> PKG now accepts any .pkg input, auto-detects the package profile, attempts the supported extraction path, and rebuilds when source content is readable. Original input is never modified.

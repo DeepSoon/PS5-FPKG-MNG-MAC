@@ -81,15 +81,17 @@ mac/
   exfat/            stdlib-only exFAT reader (macexfat.py + vendored mkpfs modules)
   build-mac-app.sh  one-shot script: publish backend + compile UI + assemble .app
   README / notes
-source/             shared C# sources (used by both Windows and Mac builds)
-assets/             bundled payloads + icon
-tools/pfs/mkpfs/    pure-Python PFS/exFAT sources (also vendored under mac/exfat/)
-tests/ verification/  contracts and checklists from the upstream release
+source/             portable C# sources compiled into the Mac backend
+assets/             bundled payloads (trophy ELFs) + icon
+third_party/        sources/licenses of the embedded payloads
 THIRD_PARTY_NOTICES.md
+README-UPSTREAM.md  original Windows release notes, kept as archive
 
 > Windows-only binaries from the upstream bundle (WinForms `.exe`s, `libScePubTools.dll`,
-> Magick/Dokan/UFS2 natives, the Windows Python embed) were removed from this repo — the Mac
-> port never loads them. The portable managed assemblies it does use
+> Magick/Dokan/UFS2 natives, win runtimes, the Windows Python embed) were removed from this
+> repo — the Mac port never loads them. Windows-only sources (WinForms GUI, OSFMount/PFS/UFS2
+> pipelines), `.cmd` launchers, guides, changelogs, tests and tool folders were removed as
+> well. The portable managed assemblies the port does use
 > (`LibProsperoPkg.dll`, `BCnEncoder.dll`, `CommunityToolkit.HighPerformance.dll`) are kept.
 ```
 

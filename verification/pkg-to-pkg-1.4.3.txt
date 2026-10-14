@@ -1,9 +1,0 @@
-PS5 FPKG Builder 1.4.3 - PKG to PKG rebuild
-
-- Adds a dedicated PKG → PKG source mode and sidebar page.
-- Reads metadata/artwork with the existing PKG reader.
-- Uses LibProsperoPkg.ProsperoPackageArchive to extract readable debug FPKG inner files and CNT metadata.
-- Reconstructs sce_sys, retargets package SDK metadata, rebuilds through LibProsperoPkg, then verifies the output.
-- Original source PKG is never modified.
-- Passcode input is masked and must contain exactly 32 characters.
-- Official/retail protected PKGs are rejected by this rebuild path.
