@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="MacBridge.cs" />
+    <Compile Include="MacAmpr.cs" />
     <Compile Include="MacBuild.cs" />
     <Compile Include="WinFormsShim.cs" />
     <Compile Include="MacProgram.cs" />

@@ -37,6 +37,8 @@ namespace FpkgExfat
                     case "extract-pkg-folder": return CmdExtractPkgFolder(args);
                     case "build-folder": return CmdBuild(args, false);
                     case "build-exfat": return CmdBuild(args, true);
+                    case "ampr-pack": return CmdAmprPack(args);
+                    case "ampr-unpack": return CmdAmprUnpack(args);
                     case "detect-image": return CmdDetectImage(args);
                     case "trophy-detect": return CmdTrophyDetect(args);
                     case "trophy-list": return CmdTrophyList(args);
@@ -67,6 +69,8 @@ namespace FpkgExfat
             Console.WriteLine("  FpkgMac extract-all <arquivo.pkg> <pasta-destino> [passcode32]");
             Console.WriteLine("  FpkgMac extract-pkg-folder <arquivo.pkg> <pasta-destino> <pasta-temp> [passcode32]");
             Console.WriteLine("  FpkgMac build-folder <pasta-do-jogo> <saida.pkg> <pasta-temp> [passcode32] [--sdk 9.00] [--mode Application]");
+            Console.WriteLine("  FpkgMac ampr-pack <pasta-do-jogo|imagem.exfat> <pasta-do-pack> [--level 0-12]");
+            Console.WriteLine("  FpkgMac ampr-unpack <pasta-do-pack> <pasta-destino>");
             Console.WriteLine("  FpkgMac build-exfat <imagem.exfat> <saida.pkg> <pasta-temp> [passcode32] [--sdk 9.00] [--mode Application]");
             Console.WriteLine("  FpkgMac detect-image <imagem>");
             Console.WriteLine("  FpkgMac trophy-detect <ps5-ip>");
@@ -249,8 +253,34 @@ namespace FpkgExfat
             return 0;
         }
 
-        private static int CmdDetectImage(string[] args)
+        private static int CmdAmprPack(string[] args)
         {
+            if (args.Length < 3) throw new ArgumentException("Uso: ampr-pack <pasta-do-jogo|imagem.exfat> <pasta-do-pack> [--level 0-12]");
+            int level = 9, workers = Math.Max(1, Environment.ProcessorCount);
+            for (int i = 3; i < args.Length; i++)
+            {
+                if ((args[i] == "--level" || args[i].StartsWith("--level=")) && i + (args[i].Contains("=") ? 0 : 1) < args.Length)
+                {
+                    string v = args[i].Contains("=") ? args[i].Substring(args[i].IndexOf('=') + 1) : args[++i];
+                    if (!int.TryParse(v, out level)) throw new ArgumentException("Level must be between 0 and 12.");
+                }
+            }
+            string outp = MacAmpr.Pack(args[1], args[2], level, Math.Min(8, workers),
+                System.Threading.CancellationToken.None, ReportProgress, Log);
+            Console.WriteLine("OK " + outp);
+            return 0;
+        }
+
+        private static int CmdAmprUnpack(string[] args)
+        {
+            if (args.Length < 3) throw new ArgumentException("Uso: ampr-unpack <pasta-do-pack> <pasta-destino>");
+            string outp = MacAmpr.Unpack(args[1], args[2],
+                System.Threading.CancellationToken.None, ReportProgress, Log);
+            Console.WriteLine("OK " + outp);
+            return 0;
+        }
+
+        private static int CmdDetectImage(string[] args)        {
             if (args.Length < 2) throw new ArgumentException("Uso: detect-image <imagem>");
             ImageFormat f = ImageFormats.Detect(args[1]);
             Console.WriteLine("FORMAT=" + f);

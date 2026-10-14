@@ -49,7 +49,7 @@ func runBackendSync(_ args: [String], timeout: TimeInterval = 120) -> (Int32, St
 // MARK: - Shared app state
 
 enum Page: String, CaseIterable {
-    case reader, files, build, extractor, trophy, about
+    case reader, files, build, ampr, extractor, trophy, about
 }
 
 // Observable without property-wrapper macros (CLT toolchain lacks SwiftUIMacros).
@@ -76,6 +76,7 @@ final class AppState {
     let reader = ReaderModel()
     let files = FilesModel()
     let build = BuildModel()
+    let ampr = AmprModel()
     let extractor = ExtractorModel()
     let trophy = TrophyModel()
 
@@ -156,8 +157,7 @@ final class ExtractorModel {
 }
 
 @Observable
-final class TrophyModel {
-    var host = ""
+final class TrophyModel {    var host = ""
     var ppsa = ""
     var rows: [TrophyRow] = []
     var sel: TrophyRow.ID?
@@ -166,6 +166,21 @@ final class TrophyModel {
     var alertMsg = ""
     var showAlert = false
     var confirmAll = false
+}
+
+@Observable
+final class AmprModel {
+    var isImage = false
+    var source = ""
+    var output = ""
+    var packDir = ""
+    var dest = ""
+    var level: Double = 9
+    var log = ""
+    var alertMsg = ""
+    var showAlert = false
+    var showDone = false
+    var donePath = ""
 }
 
 // MARK: - Streaming task engine (event-driven, zero polling)

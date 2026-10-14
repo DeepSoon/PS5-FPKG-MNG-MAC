@@ -14,6 +14,14 @@ Used by the bundled FFPFS/FFPFSC/PFS reader. Original source and license files a
 ## exFAT workflow reference
 kerrdec97 / ps5-exfat-builder.
 
+## AMPR (LZ4) reference tools
+Upstream: drakmor / ampr_emu (tools: `ampr_pack.py`, `ampr_pack_format.py`,
+`build_ampr_index.py`). License: GNU GPLv3 — full text vendored under
+`mac/ampr/LICENSE.ampr_emu`; the referenced sources ship in `mac/ampr/`.
+General pack flow inspired by Nazky / Lazy_AMPR (no Lazy_AMPR code vendored).
+Python `lz4` wheel (BSD-licensed, Yann Collet / upstream contributors) is
+vendored under `mac/ampr/site-packages/` so the app runs fully offline.
+
 All third-party components retain their respective authorship and license terms.
 
 ## PS5 Trophy Unlocker payload component

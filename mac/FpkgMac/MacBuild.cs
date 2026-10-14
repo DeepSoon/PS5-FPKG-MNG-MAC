@@ -341,8 +341,13 @@ namespace FpkgExfat
 
         private static string FindPython()
         {
-            foreach (string c in new string[] { "/usr/bin/python3", "/opt/homebrew/bin/python3",
-                "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "python3" })
+            // Prefer a full Python 3 over the CLT stub (/usr/bin/python3),
+            // which may pop an install prompt on machines without dev tools.
+            foreach (string c in new string[] {
+                "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+                "/opt/homebrew/bin/python3",
+                "/usr/bin/python3",
+                "python3" })
             {
                 try
                 {

@@ -19,7 +19,7 @@ find "$MAC/publish-arm64/exfat" -name __pycache__ -type d -exec rm -rf {} + 2>/d
 echo "== UI Swift =="
 swiftc -parse-as-library -o "$MAC/FpkgMacUI" \
   "$MAC/swift/I18n.swift" "$MAC/swift/Runner.swift" "$MAC/swift/Theme.swift" "$MAC/swift/App.swift" \
-  "$MAC/swift/PagesA.swift" "$MAC/swift/PagesB.swift" -O
+  "$MAC/swift/PagesA.swift" "$MAC/swift/PagesB.swift" "$MAC/swift/PagesC.swift" -O
 
 echo "== bundle .app =="
 rm -rf "$APP"

@@ -28,6 +28,7 @@ Native macOS port of **PS5 FPKG Builder** (Windows release `1.4.5-pkg-file-edito
 | PKG file browser (list inner files without full extraction) | ✅ native |
 | Extract one file / everything | ✅ native |
 | **Build PKG from folder or raw exFAT dump** (FullDebug FIH, managed BuiltIn Kraken) | ✅ native |
+| **AMPR LZ4 packs** (compress folder/exFAT at level 0–12, extract back) | ✅ native |
 | PKG → folder extractor | ✅ native |
 | Trophy Unlocker (FTP :2121 + loader :9021, embedded payload) | ✅ native |
 | Live progress: 0–100% bar, MB/s, MB done / remaining | ✅ native |
@@ -67,6 +68,8 @@ FpkgMac extract-all <file.pkg> <new-folder> [passcode]
 FpkgMac extract-pkg-folder <file.pkg> <new-folder> <temp> [passcode]
 FpkgMac build-folder <game-folder> <out.pkg> <temp> [passcode] [--sdk 9.00] [--mode Application]
 FpkgMac build-exfat <image.exfat> <out.pkg> <temp> [passcode] [--sdk 9.00] [--mode Application]
+FpkgMac ampr-pack <game-folder|image.exfat> <pack-dir> [--level 0-12]
+FpkgMac ampr-unpack <pack-dir> <dest-folder>
 FpkgMac detect-image <image>
 FpkgMac trophy-detect <ps5-ip>
 FpkgMac trophy-list <ps5-ip> <PPSAxxxxx>
@@ -88,9 +91,11 @@ Why `BuiltIn`: the default `Automatic` backend falls back, off-Windows, to spans
 
 ```text
 mac/
-  swift/            SwiftUI interface (I18n, Runner, Theme, App, PagesA/B)
-  FpkgMac/          portable .NET backend (MacBridge/MacBuild/MacProgram + shared sources)
+  swift/            SwiftUI interface (I18n, Runner, Theme, App, PagesA/B/C)
+  FpkgMac/          portable .NET backend (MacBridge/MacBuild/MacAmpr/MacProgram + shared sources)
   exfat/            stdlib-only exFAT reader (macexfat.py + vendored mkpfs modules)
+  ampr/             AMPR LZ4 stack: reference tools (drakmor/ampr_emu, GPLv3),
+                    original macampr.py driver, vendored lz4 wheel (offline)
   build-mac-app.sh  one-shot script: publish backend + compile UI + assemble .app
   README / notes
 source/             portable C# sources compiled into the Mac backend
@@ -116,4 +121,4 @@ Regenerable outputs (`mac/publish-arm64/`, `mac/FpkgMac/bin|obj`, `*.app`, `__py
 
 ## Credits
 
-Upstream tool by **Zer0Day** — X: https://x.com/_zer0day__ — Ko-fi: https://ko-fi.com/zzer0dayyy. Foundations: **Drakmor** / ShadowMountPlus; **svenGDK** (LibProsperoPKG, UFS2Tool); **EchoStretch** / **cragson** (A53); **kerrdec97** (ps5-exfat-builder); **MkPFS** / Lazy_MkPFS. See `THIRD_PARTY_NOTICES.md`. This Mac port, the SwiftUI interface and the portable build pipeline: **Made by Leite**.
+Upstream tool by **Zer0Day** — X: https://x.com/_zer0day__ — Ko-fi: https://ko-fi.com/zzer0dayyy. Foundations: **Drakmor** / ShadowMountPlus; **svenGDK** (LibProsperoPKG, UFS2Tool); **EchoStretch** / **cragson** (A53); **kerrdec97** (ps5-exfat-builder); **MkPFS** / Lazy_MkPFS; AMPR reference tools **drakmor/ampr_emu** (GPLv3), flow inspired by **Nazky** / Lazy_AMPR. See `THIRD_PARTY_NOTICES.md`. This Mac port, the SwiftUI interface and the portable build pipeline: **Made by Leite**.
