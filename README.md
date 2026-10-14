@@ -83,9 +83,14 @@ mac/
   README / notes
 source/             shared C# sources (used by both Windows and Mac builds)
 assets/             bundled payloads + icon
-tools/              Windows readers (PFS/UFS2) and the Python exFAT sources
+tools/pfs/mkpfs/    pure-Python PFS/exFAT sources (also vendored under mac/exfat/)
 tests/ verification/  contracts and checklists from the upstream release
 THIRD_PARTY_NOTICES.md
+
+> Windows-only binaries from the upstream bundle (WinForms `.exe`s, `libScePubTools.dll`,
+> Magick/Dokan/UFS2 natives, the Windows Python embed) were removed from this repo — the Mac
+> port never loads them. The portable managed assemblies it does use
+> (`LibProsperoPkg.dll`, `BCnEncoder.dll`, `CommunityToolkit.HighPerformance.dll`) are kept.
 ```
 
 Regenerable outputs (`mac/publish-arm64/`, `mac/FpkgMac/bin|obj`, `*.app`, `__pycache__`, `.DS_Store`) are git-ignored — build them with the script instead of committing them.
