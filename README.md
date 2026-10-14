@@ -8,6 +8,18 @@ Native macOS port of **PS5 FPKG Builder** (Windows release `1.4.5-pkg-file-edito
 
 ---
 
+## Screenshots
+
+**Package reader** — inspect a prepared folder or a readable debug PKG (PT-BR/English, Light/Dark):
+
+![Package reader](docs/screenshots/reader.png)
+
+**Build a debug PKG** — from a prepared folder or a raw exFAT dump, with SDK/mode options and live 0–100% progress:
+
+![Build a debug PKG](docs/screenshots/build-pkg.png)
+
+---
+
 ## What works on Mac
 
 | Feature | Status |
